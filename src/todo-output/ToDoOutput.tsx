@@ -1,4 +1,4 @@
-import ToDoButtoms from "../todo-buttoms/ToDoButtoms.tsx";
+import ToDoButtons from "../todo-buttons/ToDoButtons.tsx";
 
 interface ToDoOutputProps {
     newValue: string[];
@@ -12,7 +12,7 @@ const ToDoOutput = ({newValue, setNewValue}: ToDoOutputProps) =>{
         <div>
             {newValue.map((outputValue, index) => (
                 <div key={index}>
-                <ToDoButtoms {...{newValue, setNewValue, outputValue}}/>
+                <ToDoButtons {...{newValue, setNewValue, outputValue}}/>
                 </div>
 
             ))}
