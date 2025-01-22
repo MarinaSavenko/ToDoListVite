@@ -1,22 +1,26 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface AddedState {
-    value: string[];
+export interface AddedState {
+    values: string[];
 }
 
 const initialState: AddedState = {
-    value: [],
+    values: [],
 }
 const addedSlice = createSlice({
     name: 'added',
     initialState,
     reducers: {
-       setNewValue: (state, action: PayloadAction<string>) => {
-            state.value.push(action.payload);
+       setNewValue: (state: AddedState , action: PayloadAction<string>) => {
+            state.values.push(action.payload);
         },
+       setValue: (state: AddedState , action: PayloadAction<string[]>) => {
+            state.values = action.payload;
+        },
+
     },
 });
 
-export const { setNewValue } = addedSlice.actions;
+export const { setNewValue, setValue } = addedSlice.actions;
 
 export default addedSlice.reducer;

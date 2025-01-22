@@ -1,24 +1,22 @@
+import { useSelector } from "react-redux";
 import ToDoButtons from "../todo-buttons/ToDoButtons.tsx";
+import { AddedState } from "../features/counter/addedSlice.ts";
 
-interface ToDoOutputProps {
-    newValue: string[];
-    setNewValue: (newValue: string[]) => void;
+interface ToDoOutputProps {}
 
-}
+const ToDoOutput = (props: ToDoOutputProps) => {
+  const values = useSelector(
+    (state: { added: AddedState }) => state.added.values
+  );
 
-const ToDoOutput = ({newValue, setNewValue}: ToDoOutputProps) =>{
-
-    return(
-        <div>
-            {newValue.map((outputValue, index) => (
-                <div key={index}>
-                <ToDoButtons {...{newValue, setNewValue, outputValue}}/>
-                </div>
-
-            ))}
-
+  return (
+    <div>
+      {values.map((outputValue, index) => (
+        <div key={index}>
+          <ToDoButtons {...{ outputValue }} />
         </div>
-
-    );
+      ))}
+    </div>
+  );
 };
-export default ToDoOutput
+export default ToDoOutput;
